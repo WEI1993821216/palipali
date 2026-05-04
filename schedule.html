@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- TITLE 部分維持原樣，與主頁連結呼應 -->
+    <title>班級課表</title>
+    <!-- 1. 連結你原本的樣式表 -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: "Microsoft JhengHei", "PingFang TC", sans-serif;
+            scroll-behavior: smooth;
+            background-color: #f4f7f6;
+        }
+
+        .schedule-wrapper {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* 階段切換按鈕區 */
+        .phase-nav {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            position: sticky;
+            top: 80px; 
+            z-index: 99;
+        }
+
+        .phase-btn {
+            background-color: white;
+            color: #2c3e50;
+            border: 2px solid #3498db;
+            padding: 10px 22px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            font-size: 0.95em;
+        }
+
+        .phase-btn:hover {
+            background-color: #3498db;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .page-block {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+            padding: 35px;
+            margin-bottom: 60px;
+            border-top: 6px solid #3498db;
+            scroll-margin-top: 130px;
+        }
+
+        h2 {
+            color: #3498db;
+            border-bottom: 2px solid #f2f2f2;
+            padding-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 0;
+        }
+
+        h2 small {
+            font-size: 0.65em;
+            color: #888;
+            background: #f8f9fa;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-weight: normal;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th {
+            background-color: #f9fafb;
+            color: #2c3e50;
+            padding: 18px;
+            border-bottom: 2px solid #eee;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #f0f0f0;
+            text-align: center;
+        }
+
+        .date-cell {
+            font-weight: bold;
+            color: #444;
+            background-color: #fcfcfc;
+        }
+
+        @media print {
+            .phase-nav, #nav_bar { display: none; }
+            .page-block { page-break-after: always; box-shadow: none; border: 1px solid #ddd; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 2. 執行你的導覽列腳本 -->
+    <script src="nav_bar.js"></script>
+    <div id="nav_bar"></div>
+
+    <div class="schedule-wrapper">
+        <!-- 頁面大標題使用你喜歡的「階段性課程規劃」 -->
+        <h1 style="text-align: center; color: #2c3e50; font-size: 2.2em; margin-bottom: 35px;">階段性課程規劃</h1>
+
+        <div class="phase-nav">
+            <a href="#phase1" class="phase-btn">第一階段 (3/27-4/30)</a>
+            <a href="#phase2" class="phase-btn">第二階段 (5/01-5/29)</a>
+            <a href="#phase3" class="phase-btn">第三階段 (6/01-6/18)</a>
+        </div>
+
+        <div id="schedule-display"></div>
+    </div>
+
+    <!-- 3. 載入資料 -->
+    <script src="data.js"></script>
+
+    <script>
+        function createTable(id, title, range, data) {
+            let html = `
+            <div class="page-block" id="${id}">
+                <h2>${title} <small>${range}</small></h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th width="20%">日期 (星期)</th>
+                            <th width="40%">上午課程</th>
+                            <th width="40%">下午課程</th>
+                        </tr>
+                    </thead>
+                    <tbody>`;
+
+            data.forEach(item => {
+                html += `<tr>
+                    <td class="date-cell">${item.date} (${item.week})</td>`;
+                if (item.morning === item.afternoon) {
+                    html += `<td colspan="2">${item.morning}</td>`;
+                } else {
+                    html += `<td>${item.morning}</td><td>${item.afternoon}</td>`;
+                }
+                html += `</tr>`;
+            });
+
+            html += `</tbody></table></div>`;
+            return html;
+        }
+
+        const displayArea = document.getElementById('schedule-display');
+        
+        if (typeof page1Data !== 'undefined') {
+            displayArea.innerHTML += createTable("phase1", "第一階段：基礎養成", "3/27 - 4/30", page1Data);
+            displayArea.innerHTML += createTable("phase2", "第二階段：專業進階", "5/01 - 5/29", page2Data);
+            displayArea.innerHTML += createTable("phase3", "第三階段：專題實戰", "6/01 - 6/18", page3Data);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>報名資訊</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 頁面標題區 */
+        .page-header {
+            background: linear-gradient(135deg, #00d4ff 0%, #0072ff 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            margin-bottom: 50px;
+        }
+
+        /* 報名流程區 (三步驟) */
+        .step-container {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 80px;
+            gap: 20px;
+        }
+        .step-item {
+            text-align: center;
+            flex: 1;
+            position: relative;
+        }
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: #ffcc00;
+            color: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin: 0 auto 15px;
+            box-shadow: 0 4px 10px rgba(255,204,0,0.3);
+        }
+
+        /* 交錯式資訊區 */
+        .info-section {
+            display: flex;
+            align-items: center;
+            margin-bottom: 60px;
+            gap: 40px;
+        }
+        .info-section:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        .info-text {
+            flex: 1;
+        }
+        .info-visual {
+            flex: 1;
+            background: #f0f4f8;
+            height: 200px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #00d4ff;
+            border: 2px dashed #00d4ff;
+        }
+
+        .date-badge {
+            background: #eee;
+            padding: 5px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #0072ff;
+        }
+
+        /* 按鈕樣式 (維持黃色放大) */
+        .cta-box {
+            background: #333;
+            color: white;
+            padding: 50px;
+            border-radius: 30px;
+            text-align: center;
+            margin: 80px 0;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #00d4ff; 
+            color: white;
+            padding: 18px 70px;      
+            font-size: 1.4rem;       
+            font-weight: bold;
+            border-radius: 50px;
+            text-decoration: none;    
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background-color: #ffcc00; 
+            color: #333;               
+            transform: scale(1.1);     
+        }
+
+        .logo a { text-decoration: none; color: inherit; }
+    </style>
+</head>
+<body>
+   <script src="nav_bar.js"></script>
+   <div id="nav_bar"></div>
+
+    <header class="page-header">
+        <h1>如何加入我們？</h1>
+        <p>簡單三步驟，開啟你的智慧產品設計之路</p>
+    </header>
+
+    <div class="container">
+        <div class="step-container">
+            <div class="step-item">
+                <div class="step-number">1</div>
+                <h4>線上預約</h4>
+                <p>填寫基礎資料</p>
+            </div>
+            <div class="step-item">
+                <div class="step-number">2</div>
+                <h4>資格審核</h4>
+                <p>專人電話聯繫</p>
+            </div>
+            <div class="step-item">
+                <div class="step-number">3</div>
+                <h4>正式開課</h4>
+                <p>領取教材與課表</p>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <div class="info-text">
+                <h2 style="color:#0072ff;">📅 重要日期排程</h2>
+                <p>這是一個密集的 12 週訓練計畫，請預留您的時間：</p>
+                <ul>
+                    <li>開課日：<span class="date-badge">2026/06/01</span></li>
+                    <li>AutoCAD 檢定：<span class="date-badge">2026/08/15</span></li>
+                    <li>SolidWorks 檢定：<span class="date-badge">2026/08/22</span></li>
+                </ul>
+            </div>
+            <div class="info-visual">🗓️</div>
+        </div>
+
+        <div class="info-section">
+            <div class="info-text">
+                <h2 style="color:#0072ff;">🏢 培訓基地</h2>
+                <p><strong>上課地點：</strong> 台北市中正區勞工教育大樓 5 樓</p>
+                <p><strong>諮詢電話：</strong> (02) 2345-6789</p>
+                <p><strong>捷運指南：</strong> 捷運「善導寺站」3 號出口步行 5 分鐘</p>
+            </div>
+            <div class="info-visual">📍</div>
+        </div>
+
+        <div class="cta-box">
+            <h2>準備好提升你的職場競爭力了嗎？</h2>
+            <p>目前 6 月份班級尚有少數名額，立即填寫預約表單。</p>
+            <a href="form.html" class="btn">立即前往報名表單</a>
+        </div>
+    </div>
+
+    <footer style="background: #333; color: #fff; text-align: center; padding: 20px 0;">
+        <p>&copy; 2026 財團法人勞動基金會</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>課程報名</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 針對報名表單的額外調整 */
+        .registration-form fieldset {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .registration-form legend {
+            padding: 0 10px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        /* 必填欄位的樣式微調 */
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+
+        /* 當輸入框獲得焦點時變藍色 */
+        .form-group input:focus {
+            border-color: #00d4ff;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 212, 255, 0.2);
+        }
+
+        /* 證照勾選區垂直排列 */
+        .checkbox-group {
+            padding: 10px 0;
+            display: flex;
+            flex-direction: column; 
+            gap: 15px;              
+        }
+
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-size: 1.05rem;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-right: 12px;
+            cursor: pointer;
+        }
+
+        /* --- 確認報名按鈕：放大 + 黃色變色 --- */
+        .btn-submit {
+            display: inline-block;
+            background-color: #00d4ff; 
+            color: white;
+            padding: 15px 60px;      
+            font-size: 1.3rem;      
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-submit:hover {
+            background-color: #ffcc00; /* 變成黃色 */
+            color: #333;               
+            transform: scale(1.1);     
+            box-shadow: 0 6px 20px rgba(255, 204, 0, 0.4);
+        }
+
+        .btn-submit:active {
+            transform: scale(0.95);
+        }
+
+        .btn-reset {
+            background: none;
+            border: none;
+            color: #888;
+            cursor: pointer;
+            text-decoration: underline;
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+
+        .form-actions {
+            text-align: center;
+        }
+
+        .side-ad {
+            position: fixed;
+            right: 20px;
+            top: 100px;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+   <script src="nav_bar.js"></script>
+   <div id="nav_bar"></div>
+
+    <section class="container registration-form" style="padding-top: 50px;">
+        <h2>立即報名課程</h2>
+        <p style="margin-bottom: 20px; color: #666;">請填寫下方資料，標註為必填的項目請務必完成。</p>
+        
+        <form action="#">
+            <fieldset>
+                <legend>個人資料</legend>
+                <div class="form-group">
+                    <label>姓名 (必填)</label>
+                    <input type="text" name="txtName" placeholder="請輸入全名" required>
+                </div>
+                <div class="form-group">
+                    <label>信箱 (必填)</label>
+                    <input type="email" name="txtMail" placeholder="example@mail.com" required>
+                </div>
+                <div class="form-group">
+                    <label>電話 (必填)</label>
+                    <input type="tel" name="txtnumber" placeholder="0912-345-678" required>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>預計報名證照</legend>
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" name="chk" value="AUTOCAD"> 
+                        AutoCAD 國際認證檢定
+                    </label>
+                    <label>
+                        <input type="checkbox" name="chk" value="SOLIDWORK"> 
+                        SolidWorks 實務技術檢定
+                    </label>
+                </div>
+            </fieldset>
+
+            <div class="form-actions">
+                <input type="submit" value="確認報名" class="btn-submit">
+                <br>
+                <input type="reset" value="重設內容" class="btn-reset">
+            </div>
+        </form>
+    </section>
+
+    <div class="side-ad">
+        <a href="https://www.gotop.com.tw/book/BookDetails.aspx?Types=E06&bn=AEL028200">
+            <img src="image/AEL028200.jpg" width="200" alt="課程書籍">
+        </a>
+    </div>
+
+    <footer style="background: #333; color: #fff; text-align: center; padding: 20px 0; margin-top: 50px;">
+        <p>&copy; 2026 財團法人勞動基金會 - 課程專案作業</p>
+    </footer>
+</body>
+</html>

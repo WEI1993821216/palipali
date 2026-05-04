@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智慧產品設計與IoT物聯網應用課程</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .hero {
+            position: relative; 
+            overflow: hidden;   
+        }
+
+        .logo-group {
+            position: absolute;   
+            left: 60px;        
+            bottom: 80px;      
+            width: 180px;      
+            height: 180px;
+            z-index: 5;        
+        }
+
+        .Endorsement {
+            position: absolute; 
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        .Endorsement img {
+            width: 100%;
+            display: block;
+        }
+
+        #after {
+            animation: logo-animation 2s infinite;
+        }
+
+        #stick {
+            width: 13px; 
+            transform: translate(84px, 35px) rotate(3deg); 
+            transition-duration: 3s;
+            transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+            z-index: 2;
+        }
+
+        #stick:hover {
+            transform: translate(84px, -15px) rotate(3deg);
+            opacity: 0.01; 
+        }
+
+        #before {
+            margin-top: 98px; 
+            transform-origin: top;
+            animation: logo-animation 2s infinite;
+            z-index: 3;
+        }
+
+        @keyframes logo-animation {
+            0%, 100% { transform: rotate(0deg); }
+            25%, 75% { transform: rotate(10deg); }
+            50% { transform: rotate(-10deg); }
+        }
+
+        .hero h1 {
+            color: #00d4ff; 
+            animation: text-color-change 4s ease-in-out infinite;
+        }
+
+        @keyframes text-color-change {
+            0%, 100% {
+                color: #00d4ff;
+                text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+            }
+            50% {
+                color: #a64dff;
+                text-shadow: 0 0 20px rgba(166, 77, 255, 0.5);
+            }
+        }
+
+        
+        .hero .btn {
+            display: inline-block;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.3s, color 0.3s;
+            background-color: #00d4ff; 
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+        }
+
+        .hero .btn:hover {
+            transform: scale(1.15);
+            filter: brightness(1.1);
+            background-color: #ffcc00;
+            color: #333;               
+        }
+
+        .hero .btn:active {
+            transform: scale(0.95);
+        }
+
+        nav {
+            position: relative;
+            z-index: 1000;
+        }
+    </style>
+</head>
+
+<body>
+   <script src="nav_bar.js"></script>
+   <div id="nav_bar"></div>
+
+    <header class="hero">
+        <div class="logo-group">
+            <div id="after" class="Endorsement"><img src="image/Endorsement_after.png"></div>
+            <div id="stick" class="Endorsement"><img src="image/stick.png"></div>
+            <div id="before" class="Endorsement"><img src="image/Endorsement_before.png"></div>
+        </div>
+
+        <div class="container">
+            <h1>掌握物聯網趨勢，<br />
+                定義智慧產品新未來。</h1>
+            <p>結合硬體開發與雲端應用，打造跨領域 IoT 實務人才的培育搖籃。</p><br>
+            <a href="courses.html" class="btn">查看課程</a>
+        </div>
+    </header>
+</body>
+
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>未來發展方向</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .career-section {
+            padding: 80px 0;
+            background: #f4f7f9;
+            min-height: 80vh;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        /* --- 修改重點：拿掉滾動條，強制四張並排 --- */
+        .career-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 強制 4 欄 */
+            gap: 15px; /* 縮小間距，確保空間足夠 */
+            margin-top: 40px;
+            width: 100%;
+        }
+
+        .career-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 30px 15px; /* 縮小內距，避免擠壓文字 */
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .career-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: #00d4ff;
+        }
+
+        .career-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 212, 255, 0.1);
+            border-color: #00d4ff;
+        }
+
+        .career-icon {
+            font-size: 2.5rem; /* 再次縮小圖示 */
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .career-card h3 {
+            font-size: 1.15rem; /* 標題字體縮小 */
+            color: #222;
+            margin-bottom: 10px;
+            word-break: keep-all; /* 防止中文字被斷開 */
+        }
+
+        .career-card p {
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            font-size: 0.85rem; /* 內容字體縮小 */
+        }
+
+        .tag-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .tag {
+            background: #f0faff;
+            color: #00d4ff;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            white-space: nowrap; /* 防止標籤內文字換行 */
+        }
+
+        nav {
+            position: relative;
+            z-index: 1000;
+        }
+    </style>
+</head>
+
+<body>
+   <script src="nav_bar.js"></script>
+   <div id="nav_bar"></div>
+
+    <main class="career-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>未來發展方向</h2>
+                <p>結合智慧產品設計與 IoT 實務，開啟跨領域職涯新藍圖</p>
+            </div>
+
+            <div class="career-grid">
+                <div class="career-card">
+                    <div>
+                        <span class="career-icon">🤖</span>
+                        <h3>IoT 系統開發</h3>
+                        <p>負責微控制器韌體開發與感測器整合，實現核心聯網功能。</p>
+                    </div>
+                    <div class="tag-group">
+                        <span class="tag">ESP32</span>
+                        <span class="tag">C++</span>
+                    </div>
+                </div>
+
+                <div class="career-card">
+                    <div>
+                        <span class="career-icon">🎨</span>
+                        <h3>產品工業設計</h3>
+                        <p>運用 AutoCAD 進行機構配置，結合技術功能與產品美學。</p>
+                    </div>
+                    <div class="tag-group">
+                        <span class="tag">AutoCAD</span>
+                        <span class="tag">3D建模</span>
+                    </div>
+                </div>
+
+                <div class="career-card">
+                    <div>
+                        <span class="career-icon">💻</span>
+                        <h3>前端介面開發</h3>
+                        <p>設計 IoT 設備的 Web 控制後台，讓使用者直覺監控裝置。</p>
+                    </div>
+                    <div class="tag-group">
+                        <span class="tag">HTML5</span>
+                        <span class="tag">CSS3</span>
+                    </div>
+                </div>
+
+                <div class="career-card">
+                    <div>
+                        <span class="career-icon">☁️</span>
+                        <h3>雲端資料應用</h3>
+                        <p>處理大數據蒐集與遠端儲存，建構完整的物聯網生態系。</p>
+                    </div>
+                    <div class="tag-group">
+                        <span class="tag">MQTT</span>
+                        <span class="tag">雲端服務</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer style="background: #333; color: #fff; text-align: center; padding: 20px 0;">
+        <p>&copy; 2026 財團法人勞動基金會 - 智慧產品設計課程作業</p>
+    </footer>
+</body>
+
+</html>
