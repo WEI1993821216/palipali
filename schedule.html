@@ -16,10 +16,10 @@
         .schedule-wrapper {
             max-width: 1000px;
             margin: 40px auto;
-            padding: 0 15px; /* 縮小邊距，給手機更多空間 */
+            padding: 0 15px; 
         }
 
-        /* --- 修正：階段切換按鈕在手機版換行 --- */
+        /* --- 階段切換按鈕 --- */
         .phase-nav {
             display: flex;
             justify-content: center;
@@ -28,8 +28,8 @@
             position: sticky;
             top: 70px; 
             z-index: 99;
-            flex-wrap: wrap; /* 關鍵：寬度不夠時自動換行 */
-            background-color: rgba(244, 247, 246, 0.9); /* 增加背景避免滾動時重疊 */
+            flex-wrap: wrap; 
+            background-color: rgba(244, 247, 246, 0.9); 
             padding: 10px 0;
         }
 
@@ -44,7 +44,7 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
             font-size: 0.9em;
-            white-space: nowrap; /* 避免按鈕文字被拆開 */
+            white-space: nowrap; 
         }
 
         .phase-btn:hover {
@@ -57,13 +57,12 @@
             background: white;
             border-radius: 12px;
             box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-            padding: 25px; /* 手機版內距縮小 */
+            padding: 25px; 
             margin-bottom: 40px;
             border-top: 6px solid #3498db;
             scroll-margin-top: 150px;
         }
 
-        /* --- 修正：標題在手機版改為上下排列 --- */
         h2 {
             color: #3498db;
             border-bottom: 2px solid #f2f2f2;
@@ -72,7 +71,7 @@
             justify-content: space-between;
             align-items: center;
             margin-top: 0;
-            flex-wrap: wrap; /* 讓日期範圍在手機版掉到第二行 */
+            flex-wrap: wrap; 
             gap: 10px;
         }
 
@@ -85,10 +84,9 @@
             font-weight: normal;
         }
 
-        /* --- 關鍵修正：新增滑動容器 CSS --- */
         .table-responsive {
             width: 100%;
-            overflow-x: auto; /* 強制出現橫向滾動條 */
+            overflow-x: auto; 
             -webkit-overflow-scrolling: touch;
             margin-top: 10px;
             border-radius: 8px;
@@ -96,7 +94,7 @@
 
         table {
             width: 100%;
-            min-width: 600px; /* 關鍵：強制表格保持最小寬度，才能滑動 */
+            min-width: 600px; 
             border-collapse: collapse;
         }
 
@@ -119,10 +117,19 @@
             font-weight: bold;
             color: #444;
             background-color: #fcfcfc;
-            min-width: 110px; /* 確保日期不會斷行 */
+            min-width: 110px; 
         }
 
-        /* 手機版微調 */
+        /* --- 頁尾樣式 --- */
+        .main-footer {
+            background: #1a2a6c; 
+            color: #fff; 
+            text-align: center; 
+            padding: 30px 0; 
+            width: 100%;
+            margin-top: 50px;
+        }
+
         @media (max-width: 768px) {
             h1 { font-size: 1.6em !important; }
             .phase-btn { flex: 1 1 calc(45% - 10px); text-align: center; }
@@ -131,7 +138,7 @@
         }
 
         @media print {
-            .phase-nav, #nav_bar { display: none; }
+            .phase-nav, #nav_bar, .main-footer { display: none; }
             .page-block { page-break-after: always; box-shadow: none; border: 1px solid #ddd; }
         }
     </style>
@@ -152,10 +159,14 @@
         <div id="schedule-display"></div>
     </div>
 
+    <!-- 正確頁尾 -->
+    <footer class="main-footer">
+        <p>&copy; 2026 智慧產品與 IOT 物聯網應用班 - 網頁設計作業</p>
+    </footer>
+
     <script src="data.js"></script>
 
     <script>
-        // --- 修正：在 JS 函式中加入 <div class="table-responsive"> ---
         function createTable(id, title, range, data) {
             let html = `
             <div class="page-block" id="${id}">
@@ -182,7 +193,7 @@
                 html += `</tr>`;
             });
 
-            html += `</tbody></table></div></div>`; // 這裡多了個 </div> 用來閉合 table-responsive
+            html += `</tbody></table></div></div>`;
             return html;
         }
 

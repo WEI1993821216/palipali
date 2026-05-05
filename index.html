@@ -7,7 +7,7 @@
     <title>智慧產品設計與IoT物聯網應用課程</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* --- 基礎 Hero 設定 --- */
+        /* --- 基礎 Hero 設定 (完全恢復你提供的原始參數) --- */
         .hero {
             position: relative; 
             overflow: hidden;   
@@ -70,11 +70,11 @@
             50% { transform: rotate(-10deg); }
         }
 
-        /* --- 你的文字顏色變換動畫 (完全保留) --- */
+        /* --- 你的文字顏色變換動畫 --- */
         .hero h1 {
             color: #00d4ff; 
             animation: text-color-change 4s ease-in-out infinite;
-            font-size: 3rem; /* 桌面版字級 */
+            font-size: 3rem; 
             line-height: 1.3;
         }
 
@@ -108,37 +108,46 @@
             color: #333;               
         }
 
+        /* --- 頁尾樣式 --- */
+        .main-footer {
+            background: #1a2a6c; 
+            color: #fff; 
+            text-align: center; 
+            padding: 30px 0; 
+            width: 100%;
+            margin-top: 0; /* 緊接在 hero 之後 */
+        }
+
         /* ==========================================
-          手機版響應式優化：只動位置與大小，不動功能
-           ========================================== */
+          手機版響應式優化：解決破圖問題
+        ========================================== */
         @media (max-width: 768px) {
             .hero {
-                height: 70vh; /* 給手機版多一點垂直空間 */
+                height: 70vh; 
             }
 
             .hero h1 {
-                font-size: 1.8rem; /* 縮小字體防止重疊 */
+                font-size: 1.8rem; 
                 padding: 0 15px;
             }
 
-            .hero p {
-                font-size: 1rem;
-                padding: 0 20px;
-            }
-
-            /* 手機版將你的三圖組縮小並移位，避開文字 */
+            /* 手機版將圖組置中並縮放，避免與文字重疊或拆散 */
             .logo-group {
-                width: 100px;  /* 寬度從 180px 降至 100px */
-                height: 100px;
-                left: 50%;     /* 移至水平置中 */
+                width: 110px;  
+                height: 110px;
+                left: 50%;     
                 transform: translateX(-50%); 
-                bottom: 20px;  /* 移到底部 */
-                opacity: 0.6;  /* 稍微透明避免干擾閱讀 */
+                bottom: 30px;  
             }
 
-            /* 手機版調整 stick 的起始位置，保持你的動畫效果 */
+            /* 按比例調整手機版 stick 的位置 */
             #stick {
-                transform: translate(46px, 18px) rotate(3deg); 
+                width: 8px;
+                transform: translate(51px, 21px) rotate(3deg); 
+            }
+
+            #before {
+                margin-top: 60px; /* 縮小後的疊加間距 */
             }
         }
 
@@ -154,7 +163,7 @@
    <div id="nav_bar"></div>
 
     <header class="hero">
-        <!-- 完全保留你的三張圖結構 -->
+        <!-- 保持原始結構，確保能讀取到 style.css 裡的背景設定 -->
         <div class="logo-group">
             <div id="after" class="Endorsement"><img src="image/Endorsement_after.png"></div>
             <div id="stick" class="Endorsement"><img src="image/stick.png"></div>
@@ -168,6 +177,11 @@
             <a href="courses.html" class="btn">查看課程</a>
         </div>
     </header>
+
+    <!-- 正確頁尾 -->
+    <footer class="main-footer">
+        <p>&copy; 2026 智慧產品與 IOT 物聯網應用班 - 網頁設計作業</p>
+    </footer>
 </body>
 
 </html>
