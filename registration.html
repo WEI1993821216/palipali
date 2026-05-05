@@ -3,108 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>報名資訊</title>
+    <title>報名資訊 - 智慧產品設計</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* 頁面標題區 */
+        /* --- 頁面標題區 --- */
         .page-header {
-            background: linear-gradient(135deg, #00d4ff 0%, #0072ff 100%);
+            background: linear-gradient(135deg, #1a2a6c 0%, #0072ff 100%);
             color: white;
-            padding: 60px 0;
+            padding: 80px 20px;
             text-align: center;
             clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
             margin-bottom: 50px;
         }
 
-        /* 報名流程區 (三步驟) */
+        .page-header h1 { font-size: 2.5rem; margin-bottom: 10px; font-weight: 800; }
+
+        /* --- 報名流程區 (四步驟) --- */
         .step-container {
             display: flex;
             justify-content: space-around;
-            margin-bottom: 80px;
+            margin-bottom: 60px;
             gap: 20px;
+            flex-wrap: wrap;
         }
+
         .step-item {
             text-align: center;
             flex: 1;
-            position: relative;
+            min-width: 200px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: 0.3s;
         }
+
+        .step-item:hover { transform: translateY(-5px); }
+
         .step-number {
-            width: 50px;
-            height: 50px;
-            background: #ffcc00;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #ffcc00 0%, #ffb300 100%);
             color: #333;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
+            font-weight: 800;
             font-size: 1.5rem;
-            margin: 0 auto 15px;
-            box-shadow: 0 4px 10px rgba(255,204,0,0.3);
+            margin: 0 auto 20px;
+            box-shadow: 0 6px 15px rgba(255,204,0,0.3);
         }
 
-        /* 交錯式資訊區 */
+        /* --- 資訊區塊優化 --- */
         .info-section {
             display: flex;
             align-items: center;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
             gap: 40px;
+            flex-wrap: wrap;
         }
-        .info-section:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-        .info-text {
-            flex: 1;
-        }
+
+        .info-section:nth-child(even) { flex-direction: row-reverse; }
+
+        .info-text { flex: 1; min-width: 320px; }
+        .info-text h2 { color: #1a2a6c; margin-bottom: 20px; font-weight: 700; }
+
         .info-visual {
             flex: 1;
-            background: #f0f4f8;
-            height: 200px;
-            border-radius: 20px;
+            min-width: 300px;
+            background: #ffffff;
+            height: 220px;
+            border-radius: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
+            font-size: 4rem;
             color: #00d4ff;
-            border: 2px dashed #00d4ff;
+            border: 2px solid #f0f4f8;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.03);
+        }
+
+        .date-list { list-style: none; padding: 0; }
+        .date-list li {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
         }
 
         .date-badge {
-            background: #eee;
-            padding: 5px 15px;
-            border-radius: 5px;
+            background: #eef2f7;
+            padding: 6px 15px;
+            border-radius: 50px;
             font-weight: bold;
             color: #0072ff;
+            margin-left: 10px;
+            min-width: 120px;
+            text-align: center;
         }
 
-        /* 按鈕樣式 (維持黃色放大) */
+        /* --- 行動呼籲 --- */
         .cta-box {
-            background: #333;
+            background: #2c3e50;
             color: white;
-            padding: 50px;
-            border-radius: 30px;
+            padding: 60px 30px;
+            border-radius: 40px;
             text-align: center;
             margin: 80px 0;
-        }
-        .btn {
-            display: inline-block;
-            background-color: #00d4ff; 
-            color: white;
-            padding: 18px 70px;      
-            font-size: 1.4rem;       
-            font-weight: bold;
-            border-radius: 50px;
-            text-decoration: none;    
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            margin-top: 20px;
-        }
-        .btn:hover {
-            background-color: #ffcc00; 
-            color: #333;               
-            transform: scale(1.1);     
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
 
-        .logo a { text-decoration: none; color: inherit; }
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #00d4ff 0%, #0072ff 100%);
+            color: white;
+            padding: 20px 60px;
+            font-size: 1.4rem;
+            font-weight: bold;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-top: 30px;
+            box-shadow: 0 10px 20px rgba(0, 114, 255, 0.3);
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 114, 255, 0.4);
+            color: #fff;
+        }
+
+        /* --- 手機版微調 --- */
+        @media (max-width: 768px) {
+            .page-header { padding: 60px 15px; }
+            .info-section, .info-section:nth-child(even) {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            .date-list li { justify-content: center; flex-direction: column; gap: 5px; }
+            .date-badge { margin-left: 0; }
+        }
     </style>
 </head>
 <body>
@@ -112,61 +151,71 @@
    <div id="nav_bar"></div>
 
     <header class="page-header">
-        <h1>如何加入我們？</h1>
-        <p>簡單三步驟，開啟你的智慧產品設計之路</p>
+        <h1>報名資訊</h1>
+        <p>簡單四步驟，開啟你的智慧產品設計職涯</p>
     </header>
 
     <div class="container">
+        <!-- 步驟區 -->
         <div class="step-container">
             <div class="step-item">
                 <div class="step-number">1</div>
                 <h4>線上預約</h4>
-                <p>填寫基礎資料</p>
+                <p>填寫基礎意願資料</p>
             </div>
             <div class="step-item">
                 <div class="step-number">2</div>
-                <h4>資格審核</h4>
-                <p>專人電話聯繫</p>
+                <h4>資料確認</h4>
+                <p>專人電話聯繫說明</p>
             </div>
             <div class="step-item">
                 <div class="step-number">3</div>
+                <h4>甄選審核</h4>
+                <p>筆試與資格面談</p>
+            </div>
+            <div class="step-item">
+                <div class="step-number">4</div>
                 <h4>正式開課</h4>
-                <p>領取教材與課表</p>
+                <p>領取課表開啟訓練</p>
             </div>
         </div>
 
+        <!-- 日期區 -->
         <div class="info-section">
             <div class="info-text">
-                <h2 style="color:#0072ff;">📅 重要日期排程</h2>
-                <p>這是一個密集的 12 週訓練計畫，請預留您的時間：</p>
-                <ul>
-                    <li>開課日：<span class="date-badge">2026/06/01</span></li>
-                    <li>AutoCAD 檢定：<span class="date-badge">2026/08/15</span></li>
-                    <li>SolidWorks 檢定：<span class="date-badge">2026/08/22</span></li>
+                <h2>📅 重要時程表</h2>
+                <p>本年度「智慧產品設計實務班」密集訓練時程如下：</p>
+                <ul class="date-list">
+                    <li>開課日期：<span class="date-badge">2026/03/27</span></li>
+                    <li>AutoCAD 國際認證檢定：<span class="date-badge">2026/05/09</span></li>
+                    <li>SolidWorks 國際認證檢定：<span class="date-badge">2026/06/06</span></li>
+                    <li>結訓成果發表：<span class="date-badge">2026/06/15</span></li>
                 </ul>
             </div>
-            <div class="info-visual">🗓️</div>
+            <div class="info-visual">🚀</div>
         </div>
 
+        <!-- 地點區 -->
         <div class="info-section">
             <div class="info-text">
-                <h2 style="color:#0072ff;">🏢 培訓基地</h2>
-                <p><strong>上課地點：</strong> 台北市中正區勞工教育大樓 5 樓</p>
-                <p><strong>諮詢電話：</strong> (02) 2345-6789</p>
-                <p><strong>捷運指南：</strong> 捷運「善導寺站」3 號出口步行 5 分鐘</p>
+                <h2>🏢 培訓基地資訊</h2>
+                <p><strong>上課地點：</strong> 404 臺中市北區進化北路 221 號 5 樓</p>
+                <p><strong>諮詢專線：</strong> (04) 2231 6551</p>
+                <p><strong>位置說明：</strong> 本中心位於崇德路與進化北路交界，大眾運輸便捷，便於學員通勤往返。</p>
             </div>
             <div class="info-visual">📍</div>
         </div>
 
+        <!-- 行動呼籲 -->
         <div class="cta-box">
-            <h2>準備好提升你的職場競爭力了嗎？</h2>
-            <p>目前 6 月份班級尚有少數名額，立即填寫預約表單。</p>
-            <a href="form.html" class="btn">立即前往報名表單</a>
+            <h2>立即預約面試名額</h2>
+            <p>政府補助課程名額有限，額滿即停止招收</p>
+            <a href="form.html" class="btn">前往線上預約報名</a>
         </div>
     </div>
 
-    <footer style="background: #333; color: #fff; text-align: center; padding: 20px 0;">
-        <p>&copy; 2026 財團法人勞動基金會</p>
+    <footer style="background: #1a2a6c; color: #fff; text-align: center; padding: 40px 0;">
+        <p>&copy; 2026 財團法人勞動基金會 - 智慧產品設計班</p>
     </footer>
 </body>
 </html>

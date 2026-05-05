@@ -6,53 +6,54 @@
     <title>課程報名</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* 針對報名表單的額外調整 */
+        /* --- 基礎表單樣式 --- */
         .registration-form fieldset {
             border: 1px solid #ddd;
-            border-radius: 8px;
+            border-radius: 12px; /* 稍微變圓潤一點 */
             padding: 20px;
             margin-bottom: 25px;
+            background-color: #fff;
         }
 
         .registration-form legend {
             padding: 0 10px;
             font-weight: bold;
-            color: #333;
+            color: #0072ff; /* 統一色調 */
         }
 
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 20px; /* 增加間距避免誤觸 */
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 5px;
-            font-weight: 500;
+            margin-bottom: 8px;
+            font-weight: 600;
         }
 
-        /* 必填欄位的樣式微調 */
         .form-group input {
             width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            padding: 14px; /* 加高輸入框更好點擊 */
+            border: 2px solid #eee; /* 線條加粗一點增加質感 */
+            border-radius: 8px;
             box-sizing: border-box;
-            transition: border-color 0.3s;
+            transition: all 0.3s;
+            font-size: 1rem;
         }
 
-        /* 當輸入框獲得焦點時變藍色 */
         .form-group input:focus {
             border-color: #00d4ff;
             outline: none;
-            box-shadow: 0 0 5px rgba(0, 212, 255, 0.2);
+            box-shadow: 0 0 8px rgba(0, 212, 255, 0.2);
+            background-color: #f0faff;
         }
 
-        /* 證照勾選區垂直排列 */
+        /* --- 勾選區優化 --- */
         .checkbox-group {
             padding: 10px 0;
             display: flex;
             flex-direction: column; 
-            gap: 15px;              
+            gap: 18px; 
         }
 
         .checkbox-group label {
@@ -60,61 +61,97 @@
             align-items: center;
             cursor: pointer;
             font-size: 1.05rem;
+            padding: 10px; /* 增加感應區域 */
+            background: #f8f9fa;
+            border-radius: 8px;
+            transition: 0.2s;
+        }
+
+        .checkbox-group label:hover {
+            background: #eef2f3;
         }
 
         .checkbox-group input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            margin-right: 12px;
+            width: 22px; /* 放大勾選框 */
+            height: 22px;
+            margin-right: 15px;
             cursor: pointer;
         }
 
-        /* --- 確認報名按鈕：放大 + 黃色變色 --- */
+        /* --- 按鈕樣式優化 --- */
         .btn-submit {
             display: inline-block;
-            background-color: #00d4ff; 
+            background: linear-gradient(135deg, #00d4ff 0%, #0072ff 100%);
             color: white;
-            padding: 15px 60px;      
+            padding: 16px 60px;       
             font-size: 1.3rem;      
             font-weight: bold;
             border: none;
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            margin-top: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 100%; /* 電腦版預設滿版，後續在 media query 調整 */
+            max-width: 400px;
+            box-shadow: 0 4px 15px rgba(0, 114, 255, 0.3);
         }
 
         .btn-submit:hover {
-            background-color: #ffcc00; /* 變成黃色 */
+            background: #ffcc00; 
             color: #333;               
-            transform: scale(1.1);     
-            box-shadow: 0 6px 20px rgba(255, 204, 0, 0.4);
-        }
-
-        .btn-submit:active {
-            transform: scale(0.95);
+            transform: translateY(-3px);     
+            box-shadow: 0 8px 20px rgba(255, 204, 0, 0.4);
         }
 
         .btn-reset {
             background: none;
             border: none;
-            color: #888;
+            color: #aaa;
             cursor: pointer;
             text-decoration: underline;
-            margin-top: 15px;
-            font-size: 0.9rem;
+            margin-top: 20px;
+            font-size: 0.95rem;
+            padding: 10px;
         }
 
-        .form-actions {
-            text-align: center;
-        }
-
+        /* --- 側邊廣告：預設在電腦版顯示 --- */
         .side-ad {
             position: fixed;
             right: 20px;
-            top: 100px;
+            top: 150px;
             z-index: 100;
+            transition: 0.3s;
+        }
+
+        /* ==========================================
+          手機版專用微調 (Responsive)
+           ========================================== */
+        @media (max-width: 992px) {
+            /* 螢幕不夠寬時，廣告改到表單下方，不要遮住內容 */
+            .side-ad {
+                position: static; 
+                text-align: center;
+                margin: 40px 0;
+            }
+            .side-ad img {
+                width: 150px; /* 縮小一點 */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .registration-form {
+                padding: 30px 15px !important;
+            }
+            .registration-form h2 {
+                text-align: center;
+                font-size: 1.6rem;
+            }
+            fieldset {
+                padding: 15px;
+            }
+            .btn-submit {
+                width: 100%; /* 手機版按鈕全滿 */
+                padding: 18px 0;
+            }
         }
     </style>
 </head>
@@ -124,7 +161,7 @@
 
     <section class="container registration-form" style="padding-top: 50px;">
         <h2>立即報名課程</h2>
-        <p style="margin-bottom: 20px; color: #666;">請填寫下方資料，標註為必填的項目請務必完成。</p>
+        <p style="margin-bottom: 25px; color: #666;">請填寫下方資料，標註為 (必填) 的項目請務必完成。</p>
         
         <form action="#">
             <fieldset>
@@ -165,13 +202,15 @@
         </form>
     </section>
 
+    <!-- 廣告區塊 -->
     <div class="side-ad">
-        <a href="https://www.gotop.com.tw/book/BookDetails.aspx?Types=E06&bn=AEL028200">
-            <img src="image/AEL028200.jpg" width="200" alt="課程書籍">
+        <p style="font-size: 0.8rem; color: #999; margin-bottom: 5px; text-align: center;">相關教材推薦</p>
+        <a href="https://www.gotop.com.tw/book/BookDetails.aspx?Types=E06&bn=AEL028200" target="_blank">
+            <img src="image/AEL028200.jpg" width="200" alt="課程書籍" style="border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
         </a>
     </div>
 
-    <footer style="background: #333; color: #fff; text-align: center; padding: 20px 0; margin-top: 50px;">
+    <footer style="background: #333; color: #fff; text-align: center; padding: 30px 0; margin-top: 50px;">
         <p>&copy; 2026 財團法人勞動基金會 - 課程專案作業</p>
     </footer>
 </body>

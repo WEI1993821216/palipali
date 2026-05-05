@@ -7,11 +7,18 @@
     <title>智慧產品設計與IoT物聯網應用課程</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        /* --- 基礎 Hero 設定 --- */
         .hero {
             position: relative; 
             overflow: hidden;   
+            height: 60vh; /* 確保高度一致 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
         }
 
+        /* --- 你的三圖疊加動畫結構 (完全保留) --- */
         .logo-group {
             position: absolute;   
             left: 60px;        
@@ -63,9 +70,12 @@
             50% { transform: rotate(-10deg); }
         }
 
+        /* --- 你的文字顏色變換動畫 (完全保留) --- */
         .hero h1 {
             color: #00d4ff; 
             animation: text-color-change 4s ease-in-out infinite;
+            font-size: 3rem; /* 桌面版字級 */
+            line-height: 1.3;
         }
 
         @keyframes text-color-change {
@@ -79,7 +89,7 @@
             }
         }
 
-        
+        /* --- 按鈕樣式 --- */
         .hero .btn {
             display: inline-block;
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.3s, color 0.3s;
@@ -88,6 +98,7 @@
             padding: 12px 30px;
             text-decoration: none;
             border-radius: 50px;
+            margin-top: 20px;
         }
 
         .hero .btn:hover {
@@ -97,8 +108,38 @@
             color: #333;               
         }
 
-        .hero .btn:active {
-            transform: scale(0.95);
+        /* ==========================================
+          手機版響應式優化：只動位置與大小，不動功能
+           ========================================== */
+        @media (max-width: 768px) {
+            .hero {
+                height: 70vh; /* 給手機版多一點垂直空間 */
+            }
+
+            .hero h1 {
+                font-size: 1.8rem; /* 縮小字體防止重疊 */
+                padding: 0 15px;
+            }
+
+            .hero p {
+                font-size: 1rem;
+                padding: 0 20px;
+            }
+
+            /* 手機版將你的三圖組縮小並移位，避開文字 */
+            .logo-group {
+                width: 100px;  /* 寬度從 180px 降至 100px */
+                height: 100px;
+                left: 50%;     /* 移至水平置中 */
+                transform: translateX(-50%); 
+                bottom: 20px;  /* 移到底部 */
+                opacity: 0.6;  /* 稍微透明避免干擾閱讀 */
+            }
+
+            /* 手機版調整 stick 的起始位置，保持你的動畫效果 */
+            #stick {
+                transform: translate(46px, 18px) rotate(3deg); 
+            }
         }
 
         nav {
@@ -113,6 +154,7 @@
    <div id="nav_bar"></div>
 
     <header class="hero">
+        <!-- 完全保留你的三張圖結構 -->
         <div class="logo-group">
             <div id="after" class="Endorsement"><img src="image/Endorsement_after.png"></div>
             <div id="stick" class="Endorsement"><img src="image/stick.png"></div>
@@ -122,7 +164,7 @@
         <div class="container">
             <h1>掌握物聯網趨勢，<br />
                 定義智慧產品新未來。</h1>
-            <p>結合硬體開發與雲端應用，打造跨領域 IoT 實務人才的培育搖籃。</p><br>
+            <p>結合硬體開發與雲端應用，打造跨領域 IoT 實務人才的培育搖籃。</p>
             <a href="courses.html" class="btn">查看課程</a>
         </div>
     </header>

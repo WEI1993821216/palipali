@@ -1,5 +1,5 @@
 /* ==========================================
-  智慧產品設計與IoT物聯網應用課程
+  智慧產品設計與IoT物聯網應用課程 - 完整樣式表
    ========================================== */
 
 :root {
@@ -27,7 +27,7 @@ body {
     padding: 0 20px;
 }
 
-/* 導航欄 */
+/* --- 導航欄 (nav_bar.js 使用) --- */
 nav {
     background: rgba(26, 26, 26, 0.95);
     backdrop-filter: blur(10px);
@@ -65,19 +65,19 @@ nav ul li a {
     transition: var(--transition);
 }
 
-/* 新增：當前頁面的發亮效果 */
+/* 導覽列當前頁面發亮 */
 nav ul li a.active {
-    color: var(--primary-color); /* 變成活力黃 */
-    border-bottom: 2px solid var(--primary-color); /* 下方加一條線 */
+    color: var(--primary-color); 
+    border-bottom: 2px solid var(--primary-color);
     font-weight: bold;
 }
 
 nav ul li a:hover { color: var(--primary-color); }
 
-/* 英雄區 */
+/* --- 英雄區 (index.html) --- */
 .hero {
     background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), 
-                  url('image/istockphoto-1239638330-1024x1024.jpg'); /* 這裡換成你的路徑 */
+                  url('image/istockphoto-1239638330-1024x1024.jpg');
     background-size: cover;
     background-position: center;
     height: 60vh;
@@ -90,12 +90,12 @@ nav ul li a:hover { color: var(--primary-color); }
 
 .hero h1 { font-size: 3.5rem; margin-bottom: 1rem; }
 
-/* 通用設定 */
+/* --- 通用設定 --- */
 section { padding: 60px 0; }
 h2 { font-size: 2rem; margin-bottom: 30px; position: relative; padding-bottom: 10px; }
 h2::after { content: ''; position: absolute; left: 0; bottom: 0; width: 50px; height: 4px; background: var(--primary-color); }
 
-/* 卡片與表格 */
+/* --- 卡片與表格 --- */
 .row { display: flex; flex-wrap: wrap; gap: 30px; }
 .col { flex: 1; min-width: 280px; padding: 30px; background: #fff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border-top: 5px solid var(--primary-color); }
 
@@ -105,23 +105,13 @@ table td { padding: 15px; border-bottom: 1px solid #eee; text-align: center; }
 
 .btn { display: inline-block; padding: 12px 35px; background: var(--primary-color); color: var(--dark-color); text-decoration: none; border-radius: 50px; font-weight: bold; transition: var(--transition); border: none; cursor: pointer; }
 
-/* 手機版適配區 */
-@media (max-width: 768px) {
-    nav .container { padding: 0 10px; }
-    nav ul li a { padding: 8px 4px; font-size: 0.82rem; letter-spacing: -0.5px; }
-    .logo { font-size: 1.1rem; }
-    
-    section { padding: 30px 15px; }
-    .hero h1 { font-size: 2.2rem; }
-}
-/* --- 報名表單美化專區 --- */
-
+/* --- 報名表單美化 (registration/form 使用)[cite: 6, 9] --- */
 .registration-form {
     background: #ffffff;
     padding: 40px;
     margin-top: 30px;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08); /* 淡淡的陰影增加立體感 */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
 fieldset {
@@ -145,7 +135,7 @@ legend {
 }
 
 .form-group label {
-    width: 100px; /* 固定寬度讓輸入框對齊 */
+    width: 100px;
     font-weight: bold;
 }
 
@@ -157,15 +147,15 @@ legend {
     transition: var(--transition);
 }
 
-/* 輸入框點擊時發光 */
 .form-group input:focus {
     border-color: var(--primary-color);
     outline: none;
-    box-shadow: 0 0 8px rgba(255, 193, 7, 0.4);
+    box-shadow: 0 0 8px rgba(0, 212, 255, 0.4);
 }
 
 .checkbox-group label {
-    display: inline-block;
+    display: flex;
+    align-items: center;
     margin: 10px 0;
     cursor: pointer;
     font-size: 1.05rem;
@@ -176,39 +166,66 @@ legend {
 }
 
 .btn-submit {
-    width: 100%; /* 讓報名按鈕大一點好點擊 */
+    width: 100%;
     max-width: 300px;
     cursor: pointer;
 }
 
-.btn-reset {
+input[type="reset"] {
     background: none;
     border: none;
     color: #999;
     text-decoration: underline;
     margin-top: 15px;
+    padding: 10px 20px;
     cursor: pointer;
-    font-size: 0.9rem;
-}
-
-.btn-reset:hover {
-    color: #ff4444;
-}
-/* 單獨美化重設按鈕 */
-input[type="reset"] {
-    background: none;         /* 移除預設灰色背景 */
-    border: none;             /* 移除邊框 */
-    color: #999;              /* 變成低調的灰色 */
-    text-decoration: underline; /* 加入底線，增加連結感 */
-    margin-top: 15px;         /* 與上方的確認按鈕拉開距離 */
-    padding: 10px 20px;       /* 增加點擊範圍 */
-    cursor: pointer;          /* 滑鼠移上去變小手圖示 */
     font-size: 0.9rem;
     transition: all 0.3s ease;
 }
 
-/* 滑鼠移上去時的反應 */
 input[type="reset"]:hover {
-    color: #ff4444;           /* 變紅色，提醒這是清除動作 */
-    text-decoration: none;    /* 移除底線 */
+    color: #ff4444;
+    text-decoration: none;
+}
+
+/* ==========================================
+  手機版響應式優化 (Media Query)[cite: 1, 2, 4, 6]
+   ========================================== */
+@media (max-width: 768px) {
+    /* 導覽列優化：由橫向改為垂直，防止擠壓 */
+    nav .container {
+        flex-direction: column;
+        padding: 10px 0;
+    }
+    nav ul {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    nav ul li a {
+        padding: 8px 10px;
+        font-size: 0.9rem;
+    }
+
+    /* 英雄區優化：防止標題過大 */
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    /* 表單優化：標籤與輸入框上下排列 */
+    .form-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .form-group label {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    .form-group input {
+        width: 100%;
+    }
+
+    /* 通用間距調整 */
+    section { padding: 30px 15px; }
+    .container { padding: 0 15px; }
 }

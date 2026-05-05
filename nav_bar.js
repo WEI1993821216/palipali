@@ -1,8 +1,9 @@
 window.onload = function() {
     // 1. 取得當前網頁的檔名 (例如: schedule.html)
+    // 如果網址後面是空的，就預設為 index.html
     const currentPage = window.location.pathname.split("/").pop() || "index.html";
 
-    // 2. 定義導覽列的 HTML 結構 (先把 class="active" 拿掉)
+    // 2. 定義導覽列的 HTML 結構 (這裡包含你所有的頁面連結)
     const navContent = `
     <nav>
         <div class="container">
@@ -17,15 +18,19 @@ window.onload = function() {
         </div>
     </nav>`;
 
-    document.getElementById("nav_bar").innerHTML = navContent;
+    // 3. 將內容寫入 HTML 中 id 為 nav_bar 的區塊
+    const navContainer = document.getElementById("nav_bar");
+    if (navContainer) {
+        navContainer.innerHTML = navContent;
+    }
 
-    // 3. 自動比對網址，幫對應的 a 標籤加上 active
+    // 4. 自動比對網址，幫對應的 a 標籤加上 active 樣式 (配合 style.css 中的發亮效果)
     const navLinks = document.querySelectorAll("#nav_bar ul li a");
     navLinks.forEach(link => {
-        // 取得連結裡的 href (例如: schedule.html)
+        // 取得連結裡的 href 屬性值
         const linkPage = link.getAttribute("href");
         
-        // 如果網址檔名包含這個連結的 href，就亮起來
+        // 如果當前頁面檔名與連結目標一致，則加上 active 類別
         if (currentPage === linkPage) {
             link.classList.add("active");
         }

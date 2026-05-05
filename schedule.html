@@ -3,45 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- TITLE 部分維持原樣，與主頁連結呼應 -->
     <title>班級課表</title>
-    <!-- 1. 連結你原本的樣式表 -->
     <link rel="stylesheet" href="style.css">
     <style>
         body {
             font-family: "Microsoft JhengHei", "PingFang TC", sans-serif;
             scroll-behavior: smooth;
             background-color: #f4f7f6;
+            margin: 0;
         }
 
         .schedule-wrapper {
             max-width: 1000px;
             margin: 40px auto;
-            padding: 0 20px;
+            padding: 0 15px; /* 縮小邊距，給手機更多空間 */
         }
 
-        /* 階段切換按鈕區 */
+        /* --- 修正：階段切換按鈕在手機版換行 --- */
         .phase-nav {
             display: flex;
             justify-content: center;
-            gap: 12px;
-            margin-bottom: 40px;
+            gap: 10px;
+            margin-bottom: 30px;
             position: sticky;
-            top: 80px; 
+            top: 70px; 
             z-index: 99;
+            flex-wrap: wrap; /* 關鍵：寬度不夠時自動換行 */
+            background-color: rgba(244, 247, 246, 0.9); /* 增加背景避免滾動時重疊 */
+            padding: 10px 0;
         }
 
         .phase-btn {
             background-color: white;
             color: #2c3e50;
             border: 2px solid #3498db;
-            padding: 10px 22px;
+            padding: 8px 18px;
             border-radius: 25px;
             text-decoration: none;
             font-weight: bold;
             transition: all 0.3s ease;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            font-size: 0.95em;
+            font-size: 0.9em;
+            white-space: nowrap; /* 避免按鈕文字被拆開 */
         }
 
         .phase-btn:hover {
@@ -54,12 +57,13 @@
             background: white;
             border-radius: 12px;
             box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-            padding: 35px;
-            margin-bottom: 60px;
+            padding: 25px; /* 手機版內距縮小 */
+            margin-bottom: 40px;
             border-top: 6px solid #3498db;
-            scroll-margin-top: 130px;
+            scroll-margin-top: 150px;
         }
 
+        /* --- 修正：標題在手機版改為上下排列 --- */
         h2 {
             color: #3498db;
             border-bottom: 2px solid #f2f2f2;
@@ -68,6 +72,8 @@
             justify-content: space-between;
             align-items: center;
             margin-top: 0;
+            flex-wrap: wrap; /* 讓日期範圍在手機版掉到第二行 */
+            gap: 10px;
         }
 
         h2 small {
@@ -79,29 +85,49 @@
             font-weight: normal;
         }
 
+        /* --- 關鍵修正：新增滑動容器 CSS --- */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto; /* 強制出現橫向滾動條 */
+            -webkit-overflow-scrolling: touch;
+            margin-top: 10px;
+            border-radius: 8px;
+        }
+
         table {
             width: 100%;
+            min-width: 600px; /* 關鍵：強制表格保持最小寬度，才能滑動 */
             border-collapse: collapse;
-            margin-top: 10px;
         }
 
         th {
             background-color: #f9fafb;
             color: #2c3e50;
-            padding: 18px;
+            padding: 15px 10px;
             border-bottom: 2px solid #eee;
+            white-space: nowrap;
         }
 
         td {
-            padding: 15px;
+            padding: 12px 10px;
             border-bottom: 1px solid #f0f0f0;
             text-align: center;
+            font-size: 0.95em;
         }
 
         .date-cell {
             font-weight: bold;
             color: #444;
             background-color: #fcfcfc;
+            min-width: 110px; /* 確保日期不會斷行 */
+        }
+
+        /* 手機版微調 */
+        @media (max-width: 768px) {
+            h1 { font-size: 1.6em !important; }
+            .phase-btn { flex: 1 1 calc(45% - 10px); text-align: center; }
+            h2 { justify-content: center; text-align: center; }
+            .page-block { padding: 15px; }
         }
 
         @media print {
@@ -111,12 +137,10 @@
     </style>
 </head>
 <body>
-    <!-- 2. 執行你的導覽列腳本 -->
     <script src="nav_bar.js"></script>
     <div id="nav_bar"></div>
 
     <div class="schedule-wrapper">
-        <!-- 頁面大標題使用你喜歡的「階段性課程規劃」 -->
         <h1 style="text-align: center; color: #2c3e50; font-size: 2.2em; margin-bottom: 35px;">階段性課程規劃</h1>
 
         <div class="phase-nav">
@@ -128,23 +152,24 @@
         <div id="schedule-display"></div>
     </div>
 
-    <!-- 3. 載入資料 -->
     <script src="data.js"></script>
 
     <script>
+        // --- 修正：在 JS 函式中加入 <div class="table-responsive"> ---
         function createTable(id, title, range, data) {
             let html = `
             <div class="page-block" id="${id}">
                 <h2>${title} <small>${range}</small></h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th width="20%">日期 (星期)</th>
-                            <th width="40%">上午課程</th>
-                            <th width="40%">下午課程</th>
-                        </tr>
-                    </thead>
-                    <tbody>`;
+                <div class="table-responsive"> 
+                    <table>
+                        <thead>
+                            <tr>
+                                <th width="25%">日期 (星期)</th>
+                                <th width="37.5%">上午課程</th>
+                                <th width="37.5%">下午課程</th>
+                            </tr>
+                        </thead>
+                        <tbody>`;
 
             data.forEach(item => {
                 html += `<tr>
@@ -157,7 +182,7 @@
                 html += `</tr>`;
             });
 
-            html += `</tbody></table></div>`;
+            html += `</tbody></table></div></div>`; // 這裡多了個 </div> 用來閉合 table-responsive
             return html;
         }
 

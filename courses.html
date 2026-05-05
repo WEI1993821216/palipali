@@ -5,46 +5,215 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>課程簡介</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- 課程簡介專屬美編 --- */
+        .intro-header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
 
-    
+        .intro-header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+
+        .intro-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* 模組卡片佈局 */
+        .module-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .module-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border-top: 5px solid #3498db;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .module-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .module-tag {
+            display: inline-block;
+            background: #e1f5fe;
+            color: #0288d1;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            align-self: flex-start;
+        }
+
+        .module-card h3 {
+            margin: 0 0 15px 0;
+            color: #2c3e50;
+            font-size: 1.4rem;
+        }
+
+        .module-card ul {
+            padding-left: 20px;
+            color: #555;
+            margin: 0;
+            line-height: 1.8;
+        }
+
+        /* 核心技能條 */
+        .skill-section {
+            background: #fdfdfd;
+            border: 1px solid #eee;
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 60px;
+        }
+
+        .skill-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+
+        .skill-bar-container {
+            margin-bottom: 20px;
+        }
+
+        .skill-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .progress-bg {
+            background: #eee;
+            height: 12px;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+            height: 100%;
+            border-radius: 6px;
+        }
+
+        /* 手機版微調 */
+        @media (max-width: 768px) {
+            .intro-header h1 { font-size: 1.6rem; }
+            .module-grid { grid-template-columns: 1fr; }
+            .skill-section { padding: 25px 15px; }
+        }
+    </style>
 </head>
 <body>
     <script src="nav_bar.js"></script>
     <div id="nav_bar"></div>
 
+    <header class="intro-header">
+        <div class="container">
+            <h1>智慧製造與工業物聯網 (IoT) 整合應用實務</h1>
+            <p>結合硬體電路、機械設計、程式開發與 AI 應用，打造全方位智慧製造與雲端整合人才。</p>
+        </div>
+    </header>
+
     <section class="container">
-        <h2>智慧製造與工業物聯網 (IoT) 整合應用實務整體架構</h2>
-        <p>結合硬體電路、機械設計、程式開發與 AI 應用，打造全方位智慧製造與雲端整合人才。</p>
-        <table>
-            <thead>
-                <tr>
-                    <th>課程模組</th>
-                    <th>訓練重點與核心技能</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>基礎電子與硬體控制</strong></td>
-                    <td>基本電路學、電子零件焊接技巧、伺服馬達控制器實習。</td>
-                </tr>
-                <tr>
-                    <td><strong>2D/3D 電腦輔助設計</strong></td>
-                    <td>AutoCAD 平面製圖、SolidWorks 3D 立體建模、機械零組件與結構設計。</td>
-                </tr>
-                <tr>
-                    <td><strong>物聯網與網頁開發</strong></td>
-                    <td>JavaScript/jQuery 程式設計、ESP32 無線網路應用、雲端資料庫串接與遠端監控。</td>
-                </tr>
-                <tr>
-                    <td><strong>AI 輔助與先進製造</strong></td>
-                    <td>ChatGPT AI 雲端協作、3D 列印技術應用、產品原型打樣輸出。</td>
-                </tr>
-                <tr>
-                    <td><strong>專題成果與職涯準備</strong></td>
-                    <td>專業證照輔導、專題製作發表、履歷面試技巧與就業媒合會。</td>
-                </tr>
-            </tbody>
-        </table>
+        <!-- 課程模組卡片區 -->
+        <div class="module-grid">
+            <div class="module-card">
+                <span class="module-tag">基礎硬體</span>
+                <h3>基礎電子與硬體控制</h3>
+                <ul>
+                    <li>基本電路學原理</li>
+                    <li>電子零件焊接技巧實作</li>
+                    <li>伺服馬達控制器實習</li>
+                </ul>
+            </div>
+
+            <div class="module-card" style="border-top-color: #9b59b6;">
+                <span class="module-tag" style="background: #f3e5f5; color: #8e24aa;">工業設計</span>
+                <h3>2D/3D 電腦輔助設計</h3>
+                <ul>
+                    <li>AutoCAD 平面製圖規範</li>
+                    <li>SolidWorks 3D 立體建模</li>
+                    <li>機械零組件與結構設計</li>
+                </ul>
+            </div>
+
+            <div class="module-card" style="border-top-color: #e67e22;">
+                <span class="module-tag" style="background: #fff3e0; color: #e65100;">IoT 聯網</span>
+                <h3>物聯網與網頁開發</h3>
+                <ul>
+                    <li>JavaScript/jQuery 互動設計</li>
+                    <li>ESP32 無線網路串聯應用</li>
+                    <li>雲端資料庫遠端監控整合</li>
+                </ul>
+            </div>
+
+            <div class="module-card" style="border-top-color: #2ecc71;">
+                <span class="module-tag" style="background: #e8f5e9; color: #2e7d32;">先進技術</span>
+                <h3>AI 輔助與先進製造</h3>
+                <ul>
+                    <li>ChatGPT AI 雲端協作應用</li>
+                    <li>3D 列印技術快速打樣</li>
+                    <li>產品原型輸出與後處理</li>
+                </ul>
+            </div>
+
+            <div class="module-card" style="border-top-color: #f1c40f;">
+                <span class="module-tag" style="background: #fffde7; color: #fbc02d;">職涯發展</span>
+                <h3>專題成果與職涯準備</h3>
+                <ul>
+                    <li>AutoCAD / SolidWorks 證照輔導</li>
+                    <li>個人專題發表與作品集製作</li>
+                    <li>履歷撰寫與就業媒合會</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 訓練成效區 -->
+        <div class="skill-section">
+            <div class="skill-title">
+                <h2>預期訓練成效</h2>
+                <p>完成課程後，你將具備以下產業核心職能：</p>
+            </div>
+            
+            <div class="skill-bar-container">
+                <div class="skill-label"><span>機械結構設計 (CAD)</span><span>90%</span></div>
+                <div class="progress-bg"><div class="progress-fill" style="width: 90%;"></div></div>
+            </div>
+
+            <div class="skill-bar-container">
+                <div class="skill-label"><span>硬體電路整合</span><span>85%</span></div>
+                <div class="progress-bg"><div class="progress-fill" style="width: 85%;"></div></div>
+            </div>
+
+            <div class="skill-bar-container">
+                <div class="skill-label"><span>IoT 雲端開發</span><span>80%</span></div>
+                <div class="progress-bg"><div class="progress-fill" style="width: 80%;"></div></div>
+            </div>
+        </div>
     </section>
+
+    <footer style="background: #333; color: #fff; text-align: center; padding: 30px 0; margin-top: 60px;">
+        <p>&copy; 2026 財團法人勞動基金會 - 專業職能培育計畫</p>
+    </footer>
 </body>
 </html>
